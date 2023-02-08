@@ -111,16 +111,10 @@
         </h3>
         <div class="flex items-end border-gray-600 border-b border-l h-64">
           <div
-              class="bg-purple-800 border w-10 h-24"
-          ></div>
-          <div
-              class="bg-purple-800 border w-10 h-32"
-          ></div>
-          <div
-              class="bg-purple-800 border w-10 h-48"
-          ></div>
-          <div
-              class="bg-purple-800 border w-10 h-16"
+              v-for="(bar, index) in normalizeGraph()"
+              :key="index"
+              :style="{height: `${bar}%`}"
+              class="bg-purple-800 border w-10"
           ></div>
         </div>
         <button
@@ -191,6 +185,14 @@ export default {
     },
     RemoveHandler(tickerToRemove) {
       this.tickers = this.tickers.filter(t => t !== tickerToRemove);
+    },
+
+    normalizeGraph() {
+      const minValue = Math.min(...this.grapf)
+      const maxValue = Math.max(...this.grapf)
+      return this.grapf.map(
+          prise =>  5 + ((prise - minValue) * 95) / (maxValue - minValue)
+      )
     }
   },
 }
