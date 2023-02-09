@@ -179,10 +179,11 @@ export default {
           this.grapf.push(data.USD)
         }
         console.log(data)
-      },3000)
+      }, 5000)
 
       this.ticker = "";
     },
+
     RemoveHandler(tickerToRemove) {
       this.tickers = this.tickers.filter(t => t !== tickerToRemove);
     },
@@ -191,11 +192,11 @@ export default {
       const minValue = Math.min(...this.grapf)
       const maxValue = Math.max(...this.grapf)
       return this.grapf.map(
-          prise =>  5 + ((prise - minValue) * 95) / (maxValue - minValue)
+          prise => 5 + ((prise - minValue) * 95) / (maxValue - minValue)
       )
     }
   },
 }
 </script>
 
-<style src="./app.css"></style>
+
